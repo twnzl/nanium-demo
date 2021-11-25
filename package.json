@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "clean": "nanium rm dist",
+    "build:server": "cd src/server && tsc && cd ../.."
+  },
+  "devDependencies": {
+    "@angular/cli": "^12.2.3",
+    "@types/node": "^16.11.10",
+    "typescript": "^4.3.5"
+  },
+  "dependencies": {
+    "nanium": "^0.10.3"
+  }
+}

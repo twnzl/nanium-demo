@@ -1,0 +1,36 @@
+{
+  "serviceDirectory": "src/server/services",
+  "indentString": "\t",
+  "namespace": "NaniumDemo",
+  "outDir": "sdk",
+  "sdkPackage": {
+    "name": "myServices",
+    "description": "SDK for my services",
+    "author": "unknown",
+    "license": "MIT",
+    "keywords": [
+      "my",
+      "contracts",
+      "sdk",
+      "API"
+    ]
+  },
+  "sdkTsConfig": {
+    "compilerOptions": {
+      "module": "commonjs",
+      "sourceMap": false,
+      "declaration": true,
+      "watch": false,
+      "noEmitOnError": false,
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "target": "ES2020",
+      "lib": [
+        "ES2020"
+      ],
+      "types": [
+        "node"
+      ]
+    }
+  }
+}
