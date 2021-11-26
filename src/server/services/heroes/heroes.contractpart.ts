@@ -1,10 +1,12 @@
-import { Type } from 'nanium/serializers/core';
+import { ArrayType, Type } from 'nanium/serializers/core';
 
 export class Hero {
-	id?: number;
+	@Type(Number) id?: number;
+
 	name?: string;
-	skills?: HeroSkill[];
-	@Type(Date)	dob?: Date;
+
+	@ArrayType(String) skills?: HeroSkill[];
+	@Type(Date) dob?: Date;
 
 	get age(): number | undefined {
 		if (this.dob) {

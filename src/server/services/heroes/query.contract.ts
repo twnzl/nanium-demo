@@ -1,12 +1,12 @@
 import { ServiceRequestBase } from '../serviceRequestBase';
-import { RequestType } from 'nanium/serializers/core';
+import { ArrayType, RequestType, Type } from 'nanium/serializers/core';
 import { Hero, HeroSkill } from './heroes.contractpart';
 
 export class HeroesQueryRequestBody {
-	id?: number;
+	@Type(Number) id?: number;
 	name?: string;
-	skills?: HeroSkill[];
-	olderThan?: number;
+	@ArrayType(String) skills?: HeroSkill[];
+	@Type(Number) olderThan?: number;
 }
 
 @RequestType({

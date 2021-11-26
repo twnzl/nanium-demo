@@ -1,5 +1,5 @@
 import * as http from 'http';
-import { IncomingMessage, ServerResponse } from 'http';
+import { IncomingMessage, Server, ServerResponse } from 'http';
 import { Nanium } from 'nanium/core';
 import { NaniumNodejsProvider } from 'nanium/managers/providers/nodejs';
 import { NaniumHttpChannel } from 'nanium/managers/providers/channels/http';
@@ -9,11 +9,12 @@ import { Hero, HeroSkill } from './services/heroes/heroes.contractpart';
 import { HeroesQueryRequest } from './services/heroes/query.contract';
 import { URL } from 'url';
 import * as querystring from 'querystring';
+import { NaniumRestChannel } from 'nanium-channel-rest';
 
 async function run(): Promise<void> {
 
 	// init http server
-	const server = http.createServer(async (req: IncomingMessage, res: ServerResponse) => {
+	const server: Server = http.createServer(async (req: IncomingMessage, res: ServerResponse) => {
 
 		//#region CORS
 		if (req.headers.origin?.startsWith('http://localhost:4200') && req.headers.host === ('localhost:3000')) {
@@ -44,16 +45,20 @@ async function run(): Promise<void> {
 		//#endregion provide client as static files
 
 		// classic API
-		await handleClassicApi(req, res);
+		//await handleClassicApi(req, res);
 	});
 
 	// start the http server
 	server.listen(3000);
 
+
 	// init nanium API
 	await Nanium.addManager(new NaniumNodejsProvider({
 		servicePath: 'services',
-		requestChannels: [new NaniumHttpChannel({ apiPath: '/api', server: server })]
+		requestChannels: [
+			new NaniumHttpChannel({ apiPath: '/api', server: server }),
+			new NaniumRestChannel({ apiBasePath: '/c-api', server: server })
+		]
 	}));
 
 	// nanium example: execute HeroesQueryRequest on the server
