@@ -55,7 +55,7 @@ async function run(): Promise<void> {
 	// init nanium API
 	await Nanium.addManager(new NaniumNodejsProvider({
 		servicePath: 'services',
-		requestChannels: [
+		channels: [
 			new NaniumHttpChannel({ apiPath: '/api', server: server }),
 			new NaniumRestChannel({ apiBasePath: '/c-api', server: server })
 		]
