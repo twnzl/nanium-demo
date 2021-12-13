@@ -1,0 +1,48 @@
+<div class="main-container">
+
+  <h1>The Heroes</h1>
+
+  <form name="filter" class="filter" (ngSubmit)="search()">
+    <div class="filter-element">
+      <input name="id" type="text" [(ngModel)]="filter.id" placeholder="id" autocomplete="off">
+    </div>
+
+    <div class="filter-element">
+      <input name="name" type="text" [(ngModel)]="filter.name" placeholder="name" autocomplete="off">
+    </div>
+
+    <div class="filter-element">
+      <div *ngFor="let skill of HeroSkills" class="checkbox">
+        <input [name]="'skill_ ' + skill" [id]="skill" type="checkbox" [value]="skill"
+               [(ngModel)]="filter.skills[skill]">
+        <label [for]="skill">{{skill}}</label>
+      </div>
+    </div>
+
+    <button type="submit">search</button>
+  </form>
+
+  <div class="hero-list">
+
+    <!-- classic -->
+    <div class="classic">
+      <h2>classic</h2>
+      <div *ngFor="let h of heroes1" class="hero-row">
+        <div>{{h.id}}</div>
+        <div>{{h.name}}</div>
+        <div>{{h.dob}}</div>
+      </div>
+    </div>
+
+    <!-- nanium -->
+    <div class="nanium">
+      <h2>nanium</h2>
+      <div *ngFor="let h of heroes2" class="hero-row">
+        <div>{{h.id}}</div>
+        <div>{{h.name}}</div>
+        <div>{{h.age}}</div>
+      </div>
+    </div>
+
+  </div>
+</div>

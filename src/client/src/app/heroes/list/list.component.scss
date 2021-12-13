@@ -1,0 +1,89 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .filter {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+
+    .filter-element {
+      margin: 20px 50px;
+      display: flex;
+
+      & > input[type=text] {
+        width: 400px;
+        padding: 10px;
+        border: solid 1px #eee;
+        border-bottom: solid 1px #aaa;
+        border-radius: 5px;
+      }
+
+      .checkbox {
+        margin: 0 18px;
+        display: flex;
+        align-items: center;
+
+        input {
+          width: 25px;
+          height: 25px;
+        }
+
+        label {
+          margin-left: 10px;
+        }
+      }
+    }
+
+    button {
+      padding: 10px 30px;
+      border: 0;
+      border-radius: 6px;
+      background: #aaa;
+      margin-top: 10px;
+
+      &:hover {
+        background: #ccc;
+      }
+    }
+  }
+
+  .hero-list {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    .classic, .nanium {
+      margin: 50px;
+      width: 400px;
+      display: flex;
+      justify-content: space-around;
+      flex-direction: column;
+
+      h2 {
+        display: flex;
+        justify-content: center;
+      }
+
+      .hero-row {
+        display: flex;
+        justify-content: space-between;
+        border: solid 1px #eee;
+        margin: 10px;
+        padding: 20px;
+        border-radius: 10px;
+        background: #fff;
+
+        & > div {
+          margin-right: 20px;
+        }
+      }
+
+    }
+  }
+}
