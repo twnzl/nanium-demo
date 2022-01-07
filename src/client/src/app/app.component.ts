@@ -14,7 +14,12 @@ export class AppComponent implements OnInit {
     await Nanium.addManager(new NaniumConsumerBrowserHttp({
       apiUrl: 'http://localhost:3000/api',
       apiEventUrl: 'http://localhost:3000/events',
-      eventSubscriptionSendInterceptors: [EventSubscriptionSendInterceptorService]
+      onServerConnectionRestored: () => {
+        console.log('server connection restored');
+        // when the clients could not reach the server for some time,
+        // you should reload all stuff you need because maybe you missed some events
+      },
+      eventSubscriptionSendInterceptors: [EventSubscriptionSendInterceptorService],
     }));
   }
 }
