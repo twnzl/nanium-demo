@@ -21,8 +21,9 @@
     "typescript": "^4.3.5"
   },
   "dependencies": {
-    "nanium": "file:../nanium",
+    "nanium": "^0.11.5",
     "nanium-channel-rest": "^1.0.1",
     "rxjs": "6.6.3"
-  }
+  },
+  "___comment___": "file:../nanium"
 }
