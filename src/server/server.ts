@@ -1,7 +1,7 @@
 import * as http from 'http';
 import { IncomingMessage, Server, ServerResponse } from 'http';
 import { Nanium } from 'nanium/core';
-import { NaniumNodejsProvider } from 'nanium/managers/providers/nodejs';
+import { NaniumProviderNodejs } from 'nanium/managers/providers/nodejs';
 import { NaniumHttpChannel } from 'nanium/managers/providers/channels/http';
 import { Database } from './database';
 import * as fs from 'fs';
@@ -54,7 +54,7 @@ async function run(): Promise<void> {
 
 
 	// init nanium API
-	await Nanium.addManager(new NaniumNodejsProvider({
+	await Nanium.addManager(new NaniumProviderNodejs({
 		servicePath: 'services',
 		channels: [
 			new NaniumHttpChannel({ apiPath: '/api', eventPath: '/events', server: server }),
