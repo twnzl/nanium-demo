@@ -4,7 +4,19 @@
   justify-content: center;
   align-items: center;
 
+  input[type=text] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    border: solid 1px #eee;
+    border-bottom: solid 1px #aaa;
+    border-radius: 5px;
+  }
+
   .filter {
+    input[type=text] {
+      width: 400px;
+    }
 
     display: flex;
     flex-direction: column;
@@ -16,13 +28,6 @@
       margin: 20px 50px;
       display: flex;
 
-      & > input[type=text] {
-        width: 400px;
-        padding: 10px;
-        border: solid 1px #eee;
-        border-bottom: solid 1px #aaa;
-        border-radius: 5px;
-      }
 
       .checkbox {
         margin: 0 18px;
@@ -84,6 +89,24 @@
         }
       }
 
+    }
+
+    .hero-add-region {
+      margin: 10px;
+      background: #e5e5e5;
+      padding: 15px;
+      border-radius: 10px;
+
+      .skills {
+        display: flex;
+        padding: 10px 0;
+        width: 100%;
+        justify-content: space-between;
+      }
+    }
+
+    .event-handler-switch {
+      padding: 10px;
     }
   }
 }

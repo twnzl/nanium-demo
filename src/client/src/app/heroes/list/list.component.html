@@ -26,7 +26,7 @@
 
     <!-- classic -->
     <div class="classic">
-      <h2>classic</h2>
+      <h2>nanium rest channel</h2>
       <div *ngFor="let h of heroes1" class="hero-row">
         <div>{{h.id}}</div>
         <div>{{h.name}}</div>
@@ -41,6 +41,27 @@
         <div>{{h.id}}</div>
         <div>{{h.name}}</div>
         <div>{{h.age}}</div>
+      </div>
+      <div class="hero-add-region">
+        <input type="text" placeholder="name" [(ngModel)]="newHeroName"/>
+        <div class="skills">
+          <div *ngFor="let skill of HeroSkills" class="checkbox">
+            <input [name]="'new_hero_skill_ ' + skill" [id]="'new_hero_skill_ ' + skill" type="checkbox" [value]="skill"
+                   [(ngModel)]="newHeroSkills[skill]">
+            <label [for]="'new_hero_skill_ ' + skill">{{skill}}</label>
+          </div>
+        </div>
+        <button (click)="addHero()">add</button>
+      </div>
+      <div class="event-handler-switch">
+        <input [name]="'hero-added-eventHandler1'" [id]="'hero-added-eventHandler1'" type="checkbox"
+               [(ngModel)]="activeHeroAddedEventHandler1" (ngModelChange)="toggleEventHandler1()">
+        <label [for]="'hero-added-eventHandler1'">disable hero-added-eventHandler (add to list)</label>
+      </div>
+      <div class="event-handler-switch">
+        <input [name]="'hero-added-eventHandler2'" [id]="'hero-added-eventHandler2'" type="checkbox"
+               [(ngModel)]="activeHeroAddedEventHandler2" (ngModelChange)="toggleEventHandler2()">
+        <label [for]="'hero-added-eventHandler2'">disable hero-added-eventHandler (console.log)</label>
       </div>
     </div>
 

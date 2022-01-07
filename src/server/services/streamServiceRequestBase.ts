@@ -13,7 +13,7 @@ export class StreamServiceRequestBase<TRequestBody, TResult> {
 
 
 	constructor(body?: TRequestBody, head?: ServiceRequestHead) {
-		this.body =  body ?? {} as TRequestBody;
+		this.body = body ?? {} as TRequestBody;
 		this.head = head;
 	}
 
@@ -35,6 +35,6 @@ export class StreamServiceRequestBase<TRequestBody, TResult> {
 	}
 
 	stream(): Observable<TResult> {
-		return Nanium.stream(this);
+		return Nanium.stream<TResult>(this);
 	}
 }

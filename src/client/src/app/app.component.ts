@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Nanium } from 'nanium/core';
 import { NaniumConsumerBrowserHttp } from 'nanium/managers/consumers/browserHttp';
+import { EventSubscriptionSendInterceptorService } from './event-subscription-interceptor.service';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,7 @@ export class AppComponent implements OnInit {
     await Nanium.addManager(new NaniumConsumerBrowserHttp({
       apiUrl: 'http://localhost:3000/api',
       apiEventUrl: 'http://localhost:3000/events',
+      eventSubscriptionSendInterceptors: [EventSubscriptionSendInterceptorService]
     }));
   }
 }

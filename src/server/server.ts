@@ -6,10 +6,11 @@ import { NaniumHttpChannel } from 'nanium/managers/providers/channels/http';
 import { Database } from './database';
 import * as fs from 'fs';
 import { Hero, HeroSkill } from './services/heroes/heroes.contractpart';
-import { HeroesQueryRequest } from './services/heroes/query.contract';
 import { URL } from 'url';
 import * as querystring from 'querystring';
+import { DemoEventEmissionSendInterceptor, DemoEventSubscriptionReceiveInterceptor } from './events/main.interceptor';
 import { NaniumRestChannel } from 'nanium-channel-rest';
+import { HeroesQueryRequest } from './services/heroes/query.contract';
 
 async function run(): Promise<void> {
 
@@ -45,7 +46,7 @@ async function run(): Promise<void> {
 		//#endregion provide client as static files
 
 		// classic API
-		//await handleClassicApi(req, res);
+		// await handleClassicApi(req, res); -- uncommented because this is now done via the NaniumRestChannel
 	});
 
 	// start the http server
@@ -56,16 +57,17 @@ async function run(): Promise<void> {
 	await Nanium.addManager(new NaniumNodejsProvider({
 		servicePath: 'services',
 		channels: [
-			new NaniumHttpChannel({ apiPath: '/api', server: server }),
+			new NaniumHttpChannel({ apiPath: '/api', eventPath: '/events', server: server }),
 			new NaniumRestChannel({ apiBasePath: '/c-api', server: server })
-		]
+		],
+		eventSubscriptionReceiveInterceptors: [DemoEventSubscriptionReceiveInterceptor],
+		eventEmissionSendInterceptors: [DemoEventEmissionSendInterceptor]
 	}));
 
 	// nanium example: execute HeroesQueryRequest on the server
 	const heroes: Hero[] = await new HeroesQueryRequest({ skills: ['other'] }).execute();
 	heroes.forEach(h => console.log(h.name));
 }
-
 
 async function handleClassicApi(req: IncomingMessage, res: ServerResponse): Promise<any> {
 	try {

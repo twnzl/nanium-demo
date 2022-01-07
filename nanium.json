@@ -1,5 +1,6 @@
 {
   "serviceDirectory": "src/server/services",
+  "eventsDirectory": "src/server/events",
   "indentString": "\t",
   "namespace": "NaniumDemo",
   "outDir": "sdk",
