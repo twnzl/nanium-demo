@@ -55,12 +55,12 @@
       </div>
       <div class="event-handler-switch">
         <input [name]="'hero-added-eventHandler1'" [id]="'hero-added-eventHandler1'" type="checkbox"
-               [(ngModel)]="activeHeroAddedEventHandler1" (ngModelChange)="toggleEventHandler1()">
+               [(ngModel)]="disabledHeroAddedEventHandler1" (ngModelChange)="toggleEventHandler1()">
         <label [for]="'hero-added-eventHandler1'">disable hero-added-eventHandler (add to list)</label>
       </div>
       <div class="event-handler-switch">
         <input [name]="'hero-added-eventHandler2'" [id]="'hero-added-eventHandler2'" type="checkbox"
-               [(ngModel)]="activeHeroAddedEventHandler2" (ngModelChange)="toggleEventHandler2()">
+               [(ngModel)]="disabledHeroAddedEventHandler2" (ngModelChange)="toggleEventHandler2()">
         <label [for]="'hero-added-eventHandler2'">disable hero-added-eventHandler (console.log)</label>
       </div>
     </div>

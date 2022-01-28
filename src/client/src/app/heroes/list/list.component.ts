@@ -27,8 +27,8 @@ export class ListComponent implements OnInit, OnDestroy {
 
   private heroesCreatedSubscription1?: EventSubscription;
   private heroesCreatedSubscription2?: EventSubscription;
-  activeHeroAddedEventHandler1: boolean = true;
-  activeHeroAddedEventHandler2: boolean = true;
+  disabledHeroAddedEventHandler1: boolean = true;
+  disabledHeroAddedEventHandler2: boolean = true;
 
   constructor(private http: HttpClient) {
     HeroSkills.forEach(s => this.newHeroSkills[s] = false);
@@ -72,26 +72,27 @@ export class ListComponent implements OnInit, OnDestroy {
       name: this.newHeroName,
       skills: Object.keys(this.newHeroSkills).filter(s => this.newHeroSkills[s]).map(s => s as HeroSkill)
     })).execute().then();
-
   }
 
   async toggleEventHandler1(): Promise<void> {
-    if (this.activeHeroAddedEventHandler1) {
+    if (!this.disabledHeroAddedEventHandler1) {
       this.heroesCreatedSubscription1 = await HeroesCreatedEvent.subscribe((event: HeroesCreatedEvent) => {
         this.heroes2.push(event.theNewHero);
       });
-    } else {
+    } else if (this.heroesCreatedSubscription1) {
       await this.heroesCreatedSubscription1?.unsubscribe();
+      this.heroesCreatedSubscription1 = undefined;
     }
   }
 
   async toggleEventHandler2(): Promise<void> {
-    if (this.activeHeroAddedEventHandler2) {
+    if (!this.disabledHeroAddedEventHandler2) {
       this.heroesCreatedSubscription2 = await HeroesCreatedEvent.subscribe((event: HeroesCreatedEvent) => {
         console.log('HeroesCreatedEvent: ' + event.theNewHero.name);
       });
-    } else {
+    } else if (this.heroesCreatedSubscription2) {
       await HeroesCreatedEvent.unsubscribe(this.heroesCreatedSubscription2);
+      this.heroesCreatedSubscription2 = undefined;
     }
   }
 }

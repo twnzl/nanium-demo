@@ -1,6 +1,6 @@
 {
   "name": "nanium-demo",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "a demo app that shows classic API-programming side by side with nanium programming",
   "main": "index.js",
   "keywords": [
@@ -16,14 +16,16 @@
     "build:server": "cd src/server && tsc && cd ../.."
   },
   "devDependencies": {
-    "@angular/cli": "^12.2.3",
+    "@angular/cli": "~13.1.4",
     "@types/node": "^16.11.10",
     "typescript": "^4.3.5"
   },
   "dependencies": {
-    "nanium": "^0.11.5",
+    "nanium": "^0.11.7",
     "nanium-channel-rest": "^1.0.1",
     "rxjs": "6.6.3"
   },
-  "___comment___": "file:../nanium"
+  "__commend__": "file:../nanium",
+  "peerDependencies": {
+  }
 }
