@@ -21,11 +21,10 @@
     "typescript": "^4.3.5"
   },
   "dependencies": {
-    "nanium": "^0.11.7",
+    "nanium": "^0.11.8",
     "nanium-channel-rest": "^1.0.1",
-    "rxjs": "6.6.3"
+    "rxjs": "6.6.7"
   },
   "__commend__": "file:../nanium",
-  "peerDependencies": {
-  }
+  "peerDependencies": {}
 }

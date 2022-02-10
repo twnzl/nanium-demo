@@ -1,14 +1,14 @@
 import { Nanium } from 'nanium/core';
 import { Observable } from 'rxjs';
 import { ServiceRequestHead } from './serviceRequestHead';
-import { GenericType, Type } from 'nanium/serializers/core';
+import { Type } from 'nanium/serializers/core';
 
 export class StreamServiceRequestBase<TRequestBody, TResult> {
 
 	@Type(ServiceRequestHead)
 	head?: ServiceRequestHead;
 
-	@GenericType('TRequestBody')
+	@Type('TRequestBody')
 	body: TRequestBody;
 
 
