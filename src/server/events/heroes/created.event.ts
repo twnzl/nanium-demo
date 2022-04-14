@@ -1,11 +1,11 @@
 import { EventBase } from '../eventBase';
-import { EventType, Type } from 'nanium/serializers/core';
+import { EventType, Type } from 'nanium/objects';
 import { Hero } from '../../services/heroes/heroes.contractpart';
 
 @EventType({
 	scope: 'public'
 })
-export class HeroesCreatedEvent extends EventBase {
+export class HeroesCreatedEvent extends EventBase<HeroesCreatedEvent> {
 	static eventName: string = 'NaniumTest:heroes/created';
 
 	@Type(Hero) theNewHero: Hero;

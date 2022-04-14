@@ -1,10 +1,8 @@
-import { Type } from 'nanium/serializers/core';
+import { NaniumObject, Type } from 'nanium/objects';
 
-export class Hero {
+export class Hero extends NaniumObject<Hero> {
 	@Type(Number) id?: number;
-
 	name?: string;
-
 	@Type(Array, String) skills?: HeroSkill[];
 	@Type(Date) dob?: Date;
 
@@ -19,12 +17,6 @@ export class Hero {
 			return age;
 		} else {
 			return undefined;
-		}
-	}
-
-	constructor(data?: Partial<Hero>) {
-		if (data) {
-			Object.assign(this, data);
 		}
 	}
 }

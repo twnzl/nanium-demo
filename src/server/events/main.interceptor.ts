@@ -7,7 +7,7 @@ import { DemoSubscriptionData } from './subscriptionData';
 import { ServiceRequestContext } from '../services/serviceRequestContext';
 import { EventSubscription } from '../../../../nanium/interfaces/eventSubscription';
 
-export class DemoEventSubscriptionReceiveInterceptor implements EventSubscriptionReceiveInterceptor<EventBase> {
+export class DemoEventSubscriptionReceiveInterceptor implements EventSubscriptionReceiveInterceptor<EventBase<any>> {
 	async execute(data: EventSubscription<DemoSubscriptionData>): Promise<void> {
 		if (data.additionalData?.token === '1234') {
 			if (data.additionalData.tenant !== 'Company1') {
@@ -23,8 +23,8 @@ export class DemoEventSubscriptionReceiveInterceptor implements EventSubscriptio
 	}
 }
 
-export class DemoEventEmissionSendInterceptor implements EventEmissionSendInterceptor<EventBase> {
-	async execute(event: EventBase, context: ServiceRequestContext, subscription: EventSubscription<DemoSubscriptionData>): Promise<boolean> {
+export class DemoEventEmissionSendInterceptor implements EventEmissionSendInterceptor<EventBase<any>> {
+	async execute(event: EventBase<any>, context: ServiceRequestContext, subscription: EventSubscription<DemoSubscriptionData>): Promise<boolean> {
 		// basic permissions have been checked in DemoEventSubscriptionReceiveInterceptor.
 		// So it is ensured that every existing subscriber has basic permissions for this event
 		// but here e.g. you can make differences regarding the specific event

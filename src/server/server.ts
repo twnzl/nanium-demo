@@ -138,3 +138,4 @@ async function heroListEndpoint(req: IncomingMessage, res: ServerResponse, url: 
 //#region classic hero endpoint
 
 run().then();
+

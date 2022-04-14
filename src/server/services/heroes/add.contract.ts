@@ -1,5 +1,5 @@
 import { ServiceRequestBase } from '../serviceRequestBase';
-import { RequestType } from 'nanium/serializers/core';
+import { RequestType } from 'nanium/objects';
 import { Hero } from './heroes.contractpart';
 
 @RequestType({

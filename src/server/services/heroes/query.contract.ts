@@ -1,5 +1,5 @@
 import { ServiceRequestBase } from '../serviceRequestBase';
-import { RequestType, Type } from 'nanium/serializers/core';
+import { RequestType, Type } from 'nanium/objects';
 import { Hero, HeroSkill } from './heroes.contractpart';
 
 export class HeroesQueryRequestBody {

@@ -1,7 +1,7 @@
 import { Nanium } from 'nanium/core';
 import { Observable } from 'rxjs';
 import { ServiceRequestHead } from './serviceRequestHead';
-import { Type } from 'nanium/serializers/core';
+import { Type } from 'nanium/objects';
 
 export class StreamServiceRequestBase<TRequestBody, TResult> {
 
